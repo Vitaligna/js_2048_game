@@ -34,6 +34,10 @@ class Game {
   }
 
   moveLeft() {
+    if (this.status !== 'playing') {
+      return;
+    }
+
     const oldBoard = JSON.parse(JSON.stringify(this.board));
 
     for (let i = 0; i < this.board.length; i++) {
@@ -167,7 +171,6 @@ class Game {
       [0, 0, 0, 0],
     ];
     this.score = 0;
-    this.start();
   }
 
   slideRow(row) {
