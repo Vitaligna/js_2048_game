@@ -56,7 +56,6 @@ button.addEventListener('click', () => {
     render();
   } else {
     game.restart();
-    game.start();
     render();
   }
 });

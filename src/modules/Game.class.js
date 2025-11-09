@@ -57,7 +57,6 @@ class Game {
 
     this.updateStatus();
   }
-
   moveRight() {
     if (this.status !== 'playing') {
       return;
@@ -176,18 +175,12 @@ class Game {
   }
 
   restart() {
-    // this.board = [
-    //   [0, 0, 0, 0],
-    //   [0, 0, 0, 0],
-    //   [0, 0, 0, 0],
-    //   [0, 0, 0, 0],
-    // ];
     this.board = JSON.parse(JSON.stringify(this.initialState));
     this.score = 0;
-    // this.start();
     this.status = 'idle';
   }
 
+  // Add your own methods here
   slideRow(row) {
     let arr = row.filter((val) => val);
     const empty = 4 - arr.length;
