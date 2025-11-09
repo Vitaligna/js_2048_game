@@ -7,7 +7,9 @@ const game = new Game();
 function render() {
   const gameBoard = game.getState();
   const score = game.getScore();
-  const gameStatus = game.getStatus();
+  // eslint-disable-next-line
+  const status = game.getStatus();
+
   const table = document.querySelector('table');
   const cells = table.getElementsByTagName('td');
 
@@ -34,9 +36,9 @@ function render() {
   const messageLose = document.querySelector('.message-lose');
   const messageStart = document.querySelector('.message-start');
 
-  if (gameStatus === 'win') {
+  if (status === 'win') {
     messageWin.classList.remove('hidden');
-  } else if (gameStatus === 'lose') {
+  } else if (status === 'lose') {
     messageLose.classList.remove('hidden');
   } else {
     messageStart.classList.add('hidden');

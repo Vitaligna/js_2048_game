@@ -28,18 +28,12 @@ class Game {
       [0, 0, 0, 0],
     ],
   ) {
-    // this.board = initialState;
-    this.initialState = JSON.parse(JSON.stringify(initialState));
-    this.board = JSON.parse(JSON.stringify(initialState));
+    this.board = initialState;
     this.score = 0;
     this.status = 'idle';
   }
 
   moveLeft() {
-    if (this.status !== 'playing') {
-      return;
-    }
-
     const oldBoard = JSON.parse(JSON.stringify(this.board));
 
     for (let i = 0; i < this.board.length; i++) {
@@ -57,11 +51,8 @@ class Game {
 
     this.updateStatus();
   }
-  moveRight() {
-    if (this.status !== 'playing') {
-      return;
-    }
 
+  moveRight() {
     const oldBoard = JSON.parse(JSON.stringify(this.board));
 
     for (let i = 0; i < this.board.length; i++) {
@@ -81,10 +72,6 @@ class Game {
   }
 
   moveUp() {
-    if (this.status !== 'playing') {
-      return;
-    }
-
     const oldBoard = JSON.parse(JSON.stringify(this.board));
 
     this.transponseBoard();
@@ -107,10 +94,6 @@ class Game {
   }
 
   moveDown() {
-    if (this.status !== 'playing') {
-      return;
-    }
-
     const oldBoard = JSON.parse(JSON.stringify(this.board));
 
     this.transponseBoard();
@@ -175,12 +158,18 @@ class Game {
   }
 
   restart() {
-    this.board = JSON.parse(JSON.stringify(this.initialState));
-    this.score = 0;
     this.status = 'idle';
+
+    this.board = [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ];
+    this.score = 0;
+    this.start();
   }
 
-  // Add your own methods here
   slideRow(row) {
     let arr = row.filter((val) => val);
     const empty = 4 - arr.length;
